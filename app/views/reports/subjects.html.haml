@@ -1,5 +1,4 @@
 - breadcrumb :subjects
 .subjects
   list of subjects:
-  - subject_items.each do |subject_item|
-    .subject-item
+  .subject-item= render partial: 'reports/subject_item', collection: subject_items

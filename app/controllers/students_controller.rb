@@ -1,6 +1,9 @@
 class StudentsController < ApplicationController
+  expose(:students)
   expose(:student, attributes: :student_params)
   expose(:student_subject_items) { student.subject_items }
+
+  before_action :authenticate_user!
 
   def create
     if student.save
