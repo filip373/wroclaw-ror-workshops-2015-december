@@ -27,6 +27,8 @@ group :development do
   gem 'rails_layout'
   gem 'spring-commands-rspec'
   gem 'quiet_assets'
+  gem 'guard'
+  gem 'guard-rspec', require: false
 end
 
 group :development, :test do
