@@ -3,6 +3,7 @@ class SubjectItem < ActiveRecord::Base
   has_many :students, through: :participations
   has_many :subject_item_notes
   belongs_to :teacher
+  has_many :payments
 
   validates :title, presence: true
 

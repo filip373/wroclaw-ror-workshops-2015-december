@@ -1,6 +1,6 @@
 class TeachersController < ApplicationController
-  expose(:teachers)
-  expose(:teacher, attributes: :teacher_params)
+  expose_decorated(:teachers, ->{ Teacher.all })
+  expose_decorated(:teacher)
   expose(:teacher_subject_items) { teacher.subject_items }
 
   before_action :authenticate_user!
@@ -14,7 +14,7 @@ class TeachersController < ApplicationController
   end
 
   def update
-    if teacher.save
+    if teacher.update(teacher_params)
       redirect_to teacher_path(teacher), notice: I18n.t('shared.updated', resource: 'Teacher')
     else
       render :edit

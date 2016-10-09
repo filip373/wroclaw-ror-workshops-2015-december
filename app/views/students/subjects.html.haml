@@ -9,5 +9,5 @@
     - student_subject_items.each do |subject_item|
       %tr
         %td= subject_item.title
-        %td= student.decorate.avg_notes(subject_item)
+        %td= student.avg_notes(subject_item)
 = link_to t('shared.back'), students_path, class: 'btn btn-default'

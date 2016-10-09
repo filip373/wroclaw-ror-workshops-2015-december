@@ -4,6 +4,7 @@ en:
     teachers: Teachers
     reports: Reports
     reports_subjects: Subjects
+    reports_payments: Payments
     logout: Logout
     signin: Sign in
     signup: Sign up
@@ -38,3 +39,4 @@ en:
   errors:
     messages:
       not_in_past: must be in the past
+      invalid_month: must be valid month number

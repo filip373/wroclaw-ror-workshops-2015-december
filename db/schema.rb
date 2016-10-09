@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161008222853) do
+ActiveRecord::Schema.define(version: 20161009140343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,20 @@ ActiveRecord::Schema.define(version: 20161008222853) do
 
   add_index "participations", ["student_id"], name: "index_participations_on_student_id", using: :btree
   add_index "participations", ["subject_item_id"], name: "index_participations_on_subject_item_id", using: :btree
+
+  create_table "payments", force: :cascade do |t|
+    t.integer  "subject_item_id", null: false
+    t.integer  "student_id",      null: false
+    t.integer  "month",           null: false
+    t.integer  "year",            null: false
+    t.date     "payment_date",    null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "payments", ["student_id"], name: "index_payments_on_student_id", using: :btree
+  add_index "payments", ["subject_item_id", "student_id", "month", "year"], name: "unique_payment_index", unique: true, using: :btree
+  add_index "payments", ["subject_item_id"], name: "index_payments_on_subject_item_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.string   "first_name"
@@ -82,6 +96,8 @@ ActiveRecord::Schema.define(version: 20161008222853) do
 
   add_foreign_key "participations", "students"
   add_foreign_key "participations", "subject_items"
+  add_foreign_key "payments", "students"
+  add_foreign_key "payments", "subject_items"
   add_foreign_key "subject_item_notes", "students"
   add_foreign_key "subject_item_notes", "subject_items"
   add_foreign_key "subject_items", "teachers"

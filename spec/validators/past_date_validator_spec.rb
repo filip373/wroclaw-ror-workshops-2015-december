@@ -1,17 +1,17 @@
 require 'rails_helper'
 
-class Validatable
+class DateValidatable
   include ActiveModel::Validations
   attr_accessor :date
   validates :date, past_date: true
 end
 
-class ValidatableWithMessage < Validatable
+class DateValidatableWithMessage < DateValidatable
   validates :date, past_date: { message: 'not really valid' }
 end
 
 RSpec.describe PastDateValidator do
-  subject { Validatable.new }
+  subject { DateValidatable.new }
   before { subject.date = date }
 
   context 'when date is nil' do
@@ -32,7 +32,7 @@ RSpec.describe PastDateValidator do
     it { is_expected.to be_invalid }
 
     context 'with error message passed' do
-      subject { ValidatableWithMessage.new }
+      subject { DateValidatableWithMessage.new }
 
       it 'appends passed message to record' do
         subject.validate

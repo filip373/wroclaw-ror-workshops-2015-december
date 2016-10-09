@@ -15,5 +15,6 @@ RSpec.describe SubjectItem do
     it { is_expected.to have_many :students }
     it { is_expected.to have_many :subject_item_notes }
     it { is_expected.to belong_to :teacher }
+    it { is_expected.to have_many :payments }
   end
 end

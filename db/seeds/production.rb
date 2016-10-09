@@ -35,6 +35,27 @@ SubjectItem.all.each do |subject_item|
   subject_item.students << students.sample(rand(1..4))
 end
 
+students_with_subjects = Student.select { |s| s.subject_items.count > 0  }
+students_with_subjects.each do |student|
+  student.subject_items.each do |subject_item|
+    months_taken = []
+    rand(2..6).times do |index|
+      month = nil
+      loop do
+        month = rand(2..365).days.ago
+        break unless months_taken.include?(month.month)
+      end
+      months_taken << month.month
+      student.payments.create!(
+        subject_item: subject_item,
+        payment_date: month + rand(-30..1).days,
+        year: month.year,
+        month: month.month
+      )
+    end
+  end
+end
+
 SubjectItem.all.each do |subject_item|
   subject_item.students.each do |student|
     rand(1..5).times do

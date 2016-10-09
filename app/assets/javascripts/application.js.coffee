@@ -11,8 +11,11 @@
 # about supported directives.
 #
 #= require jquery
+#= require jquery.turbolinks
 #= require jquery_ujs
 #= require turbolinks
 #= require bootstrap-sprockets
-#= require bootstrap-datepicker
+#= require bootstrap-datepicker/core
+#= require dataTables/jquery.dataTables
+#= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 #= require_tree .

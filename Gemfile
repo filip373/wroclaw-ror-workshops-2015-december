@@ -4,6 +4,7 @@ ruby '2.2.3'
 gem 'bootstrap-sass'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'decent_exposure'
+gem 'decent_decoration', '~> 0.1.0'
 gem 'devise'
 gem 'draper'
 gem 'font-awesome-rails'
@@ -20,6 +21,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'dotenv-rails'
 gem 'gretel'
 gem 'bootstrap-datepicker-rails'
+gem 'jquery-turbolinks'
+gem 'jquery-datatables-rails', '~> 3.4.0'
 
 group :development do
   gem 'better_errors'
@@ -50,6 +53,6 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'launchy'
-  gem 'selenium-webdriver'
+  gem 'capybara-webkit'
   gem 'shoulda-matchers', require: false
 end

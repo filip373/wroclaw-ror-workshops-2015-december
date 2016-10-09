@@ -9,6 +9,6 @@
       %td= student.last_name
     %tr
       %td= "#{t('student.columns.birthdate')}:"
-      %td= student.decorate.birthdate_formatted
+      %td= student.birthdate_formatted
 
 = link_to t('shared.back'), students_path, class: 'btn btn-default'

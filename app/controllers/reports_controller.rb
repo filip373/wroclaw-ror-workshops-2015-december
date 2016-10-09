@@ -1,8 +1,6 @@
 class ReportsController < ApplicationController
-  expose(:subject_items) { SubjectItem.includes(:teacher, :students) }
+  expose_decorated(:subject_items) { SubjectItem.includes(:teacher, :students) }
+  expose_decorated(:payments, ->{ Payment.all })
 
   before_action :authenticate_user!
-
-  def subjects
-  end
 end
