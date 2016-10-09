@@ -19,10 +19,12 @@ en:
     back: Back
     add_new_item: Add new one
     subjects: subjects
+    blank: None
   student:
     columns:
       first_name: first name
       last_name: last name
+      birthdate: birthdate
   teacher:
     columns:
       first_name: first name
@@ -32,3 +34,7 @@ en:
     columns:
       full_name: Full name
       avg_notes: Notes avarange
+      birthdate: Birthdate
+  errors:
+    messages:
+      not_in_past: must be in the past

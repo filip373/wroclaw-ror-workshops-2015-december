@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'User visits subjects page'  do
-  let!(:student) { create :student, first_name: 'Jan' }
+  let!(:student) { create :student, first_name: 'Jan', birthdate: Date.new(1990, 9, 30) }
   let!(:teacher) { create :teacher, first_name: 'Adam' }
   let!(:subject) { create :subject_item, title: 'Lesson 1', teacher: teacher }
   let!(:participation) { create :participation, student: student, subject_item: subject }
@@ -21,6 +21,7 @@ feature 'User visits subjects page'  do
     expect(page).to have_content 'Jan'
     expect(page).to have_content 'Adam'
     expect(page).to have_content 'Lesson 1'
+    expect(page).to have_content '1990-09_30'
   end
 
   scenario 'only when sign in' do
