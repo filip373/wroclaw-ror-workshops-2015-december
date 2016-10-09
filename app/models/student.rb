@@ -4,6 +4,7 @@ class Student < ActiveRecord::Base
   has_many :subject_item_notes, dependent: :destroy
 
   validates :first_name, :last_name, presence: true
+  validates :birthdate, past_date: true
 
   accepts_nested_attributes_for :subject_items
 end

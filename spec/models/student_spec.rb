@@ -5,7 +5,7 @@ RSpec.describe Student do
     it { is_expected.to validate_presence_of :first_name }
     it { is_expected.to validate_presence_of :last_name }
     context 'when birthdate is in the future' do
-      before { subject.birthdate = 5.days.since.to_date }
+      subject { build_stubbed(:student, birthdate: 5.days.since.to_date) }
       it { is_expected.to be_invalid }
     end
   end

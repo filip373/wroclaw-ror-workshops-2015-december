@@ -27,6 +27,14 @@ feature 'User creates student' do
     expect(page).to have_content "can't be blank"
   end
 
+  scenario 'with future birthdate' do
+    fill_in 'First name', with: 'Adrian'
+    fill_in 'Last name', with: 'Nowacki'
+    fill_in 'Birthdate', with: 5.days.since.strftime('%d/%m/%Y')
+    click_button 'Create Student'
+    expect(page).to have_content "must be in the past"
+  end
+
   scenario 'with valid input including birthdate' do
     fill_in 'First name', with: 'Adrian'
     fill_in 'Last name', with: 'Nowacki'
