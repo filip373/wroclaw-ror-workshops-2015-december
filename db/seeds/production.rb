@@ -27,6 +27,10 @@ end
 end
 
 students = Student.all
+students.sample(rand(15..20)).each do |student|
+  student.update(birthdate: rand(7..17).years.ago)
+end
+
 SubjectItem.all.each do |subject_item|
   subject_item.students << students.sample(rand(1..4))
 end
